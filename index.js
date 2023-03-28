@@ -50,7 +50,7 @@ async function run() {
     
 }
 run()
-res.send({"body":"done"})
+res.send({"body":"subscription done"})
 })
 app.post("/sendnotification",(req,res)=>{
 
@@ -60,7 +60,7 @@ app.post("/sendnotification",(req,res)=>{
             const database = client.db("pushnotification");
             const haiku = database.collection("subscription");
             const result = await haiku.find({}).toArray();
-            console.log("result",result)
+            console.log(result)
 
             for (let i = 0; i < result.length; i++) {
                 const subscription = result[i];
@@ -69,6 +69,7 @@ app.post("/sendnotification",(req,res)=>{
                  webPush.sendNotification(subscription, JSON.stringify(req.body))
                 
               }
+              res.send({"body":"success"})
             
         } catch (err) {
             console.log(err.stack);
@@ -76,7 +77,7 @@ app.post("/sendnotification",(req,res)=>{
         
     }
     run()
-    res.send({"body":"success"})
+    
 
 })
 
