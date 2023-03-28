@@ -24,7 +24,9 @@ webPush.setVapidDetails(
     vapidKeys.publicKey,
     vapidKeys.privateKey,
   );
-
+ app.get("/",(req,res)=>{
+    res.send({"body":"hellow form home page"})
+ })
 
 app.post('/subscribe',(req,res)=>{
     
