@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const webPush = require('web-push')
+require('dotenv').config()
 const cors = require('cors')
 const path = require('path')
 const { MongoClient } = require("mongodb");
@@ -9,9 +10,12 @@ app.use(express.json())
 
 app.use(cors())
 
+const url= process.env.url
+console.log(url)
+
 
 // const url = "mongodb+srv://djd:xFyJBEhWmMyL1Aau@cluster0.5ftqt.mongodb.net/?retryWrites=true&w=majority"
-const urI ="mongodb+srv://vercel-admin-user:U0kAQwgs85V7fFr7@cluster0.5ftqt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+// const urI ="mongodb+srv://vercel-admin-user:U0kAQwgs85V7fFr7@cluster0.5ftqt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const client = new MongoClient(url);
 // const publicvidkey ="BKoQKT0Fgo5NBXCQu-YAeCWZAw8dj-HcJnqDyS5qkYBZYGAhrZ7JByt1eFQzdqaCMsQzL95beJfgOiyTK_TRlgg "
 // const privatevidkey = "bWlzmatH7YoKfPAzba6NqBAKyFLuDx0OE9tvId4kQk4"
